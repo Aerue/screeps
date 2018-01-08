@@ -12,6 +12,7 @@
     "no-namespace": [true, "allow-declarations"],
     "max-line-length": [false],
     "ordered-imports": false,
+    "no-empty": false,
     "trailing-comma": [true, {"multiline": "never", "singleline": "never"}],
     "variable-name": [
       true,

@@ -6,13 +6,13 @@
   "//": "If you add or change the names of destinations in screeps.json, make sure you update these scripts to reflect the changes",
   "scripts": {
     "lint": "tslint \"src/**/*.ts\"",
-    "push-main": "rollup -c --dest main",
-    "push-pserver": "rollup -c --dest pserver",
-    "push-sim": "rollup -c --dest sim",
+    "push-default": "rollup -c --dest default",
+    "push-simulation": "rollup -c --dest simulation",
+    "push-private": "rollup -c --dest private",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch-main": "rollup -cw --dest main",
-    "watch-pserver": "rollup -cw --dest pserver",
-    "watch-sim": "rollup -cw --dest sim"
+    "watch-default": "rollup -cw --dest default",
+    "watch-simulation": "rollup -cw --dest simulation",
+    "watch-private": "rollup -cw --dest private"
   },
   "repository": {
     "type": "git",
@@ -38,6 +38,7 @@
     "typescript": "^2.6.1"
   },
   "dependencies": {
+    "@types/screeps": "^2.1.0",
     "source-map": "^0.6.1"
   }
 }
