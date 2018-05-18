@@ -20,6 +20,7 @@
       "check-format",
       "allow-pascal-case",
       "allow-leading-underscore"
-    ]
+    ],
+    "object-literal-sort-keys": false
   }
 }

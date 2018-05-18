@@ -4,8 +4,8 @@ import "./prototypes/Rooms";
 
 export const loop = ErrorMapper.wrapLoop((): void => {
 
-  const empire = new Empire();
-  empire.init();
-  empire.run();
+    console.log("New tick");
+
+    (new Empire()).run();
 
 });

@@ -5,6 +5,7 @@ import resolve from "rollup-plugin-node-resolve";
 import commonjs from "rollup-plugin-commonjs";
 import typescript from "rollup-plugin-typescript2";
 import screeps from "rollup-plugin-screeps";
+import json from "rollup-plugin-json";
 
 let cfg;
 const i = process.argv.indexOf("--dest") + 1;
@@ -14,20 +15,35 @@ if (i == 0) {
   throw new Error("Invalid upload destination");
 }
 
-export default {
-  input: "src/main.ts",
-  output: {
-    file: "dist/main.js",
-    format: "cjs"
+export default [
+  {
+    input: "src/main.ts",
+    output: {
+      file: "dist/main.js",
+      format: "cjs"
+    },
+    sourcemap: true,
+    plugins: [
+      clean(),
+      resolve(),
+      commonjs(),
+      typescript({tsconfig: "./tsconfig.json"}),
+      screeps({config: cfg, dryRun: cfg == null})
+    ]
   },
-
-  sourcemap: true,
-
-  plugins: [
-    clean(),
-    resolve(),
-    commonjs(),
-    typescript({tsconfig: "./tsconfig.json"}),
-    screeps({config: cfg, dryRun: cfg == null})
-  ]
-}
+  {
+    input: "src/autospawner.ts",
+    output: {
+      file: "dist/autospawner.js",
+      format: "cjs"
+    },
+    sourcemap: true,
+    plugins: [
+      clean(),
+      json(),
+      resolve(),
+      commonjs(),
+      typescript({tsconfig: "./tsconfig.json"})
+    ]
+  }
+]

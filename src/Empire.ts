@@ -1,18 +1,18 @@
 import {DefaultCreep} from "./roles/DefaultCreep";
 import {MinerCreep} from "./roles/MinerCreep";
 import {Area} from "./Area";
+import Utils from "./utils/Utils";
 
 export class Empire {
 
   private areas: { [name: string]: Area };
 
   constructor() {
-  }
+      this.areas = {};
 
-  public init(): void {
-    this.__checkMemory();
-    this.__initCreeps();
-    this.__initAreas();
+      this.__checkMemory();
+      this.__initCreeps();
+      this.__initAreas();
   }
 
   public run(): void {
@@ -22,10 +22,10 @@ export class Empire {
   }
 
   private __checkMemory(): void {
-    if (Memory.empire === undefined) {
+    if (Utils.isUndefined(Memory.empire)) {
       Memory.empire = {};
     }
-    if (Memory.areas === undefined) {
+    if (Utils.isUndefined(Memory.areas)) {
       Memory.areas = {};
     }
   }
@@ -53,18 +53,19 @@ export class Empire {
   }
 
   private __initAreas(): void {
-    this.areas = {};
     for (const name in Game.rooms) {
       const room: Room = Game.rooms[name];
       if (room.my) {
         this.areas[name] = new Area(name);
-        if (Memory.areas[name] === undefined) {
+        if (Utils.isUndefined(Memory.areas[name])) {
           Memory.areas[name] = {};
         }
-        if (Memory.areas[name].sources === undefined) {
+        if (Utils.isUndefined(Memory.areas[name].sources)) {
           Memory.areas[name] = {
             sources: this.areas[name].buildSources()
           };
+        } else {
+            this.areas[name].run();
         }
       }
     }

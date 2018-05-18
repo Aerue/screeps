@@ -30,15 +30,18 @@
     "rollup": "^0.50.0",
     "rollup-plugin-clean": "^1.0.0",
     "rollup-plugin-commonjs": "^8.2.6",
-    "rollup-plugin-node-resolve": "^3.0.0",
-    "rollup-plugin-screeps": "0.0.1",
+    "rollup-plugin-json": "^2.3.0",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-screeps": "0.1.1",
     "rollup-plugin-typescript2": "^0.8.1",
     "tslint": "^5.8.0",
-    "typed-screeps": "^2.0.0",
-    "typescript": "^2.6.1"
+    "typed-screeps": "^2.2.2",
+    "typescript": "^2.8.1"
   },
   "dependencies": {
-    "@types/screeps": "^2.1.0",
+    "@types/screeps": "^2.2.1",
+    "npm": "^5.8.0",
     "source-map": "^0.6.1"
   }
 }
